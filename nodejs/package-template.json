@@ -1,0 +1,59 @@
+required field => !"{KEY}"
+alternate field => ~"{KEY}"
+
+{
+  !"name": "[@{SCOPE}/]{NAME}",
+  !"version": "{VERSION (Semantic Versioning)}",
+  "description": "{DESCRIPTION}",
+  "keywords": ["{KEYWORD}", ...],
+  "homepage": "{HOMEPAGE}",
+  "bugs": {
+    "url": "{BUGS_URL}",
+    "email": "{BUGS_EMAIL}"
+  },
+  ~"bugs": "{BUGS_URL}",
+  "license": "{LICENSE (SPDX license ID)}",
+  "author": {
+    !"name" : "{AUTHOR_NAME}",
+    "email" : "{AUTHOR_EMAIL}",
+    "url" : "{AUTHOR_HOMEPAGE}"
+  },
+  ~"author": "{AUTHOR_NAME} <{AUTHOR_EMAIL}> ({AUTHOR_HOMEPAGE})",
+  "contributors": [(fields like author field), ...],
+  "files": ["{FILE}", ...],
+  "main": "{ENTRY_SCRIPT_PATH (root is this file)}",
+  "bin": TODO,
+  "man": TODO,
+  "directories": TODO,
+  "repository": {
+    !"type": "{REPO_TYPE (eg. git,svn,...)}",
+    !"url": "{REPO_URL}"
+  },
+  ~"repository": "{SHORTENED_REPO_URL (only GitHub,GitHub gist,Bitbucket,GitLab)}"
+  "scripts": TODO,
+  "config": TODO,
+  "dependencies": {
+    "{DEPENDENCY_PACKAGE_NAME}": "{DEPENDENCY_PACKAGE_VERSION (Semantic Versioning Range)}",
+    ~"{DEPENDENCY_PACKAGE_NAME}": "{DEPENDENCY_PACKAGE_URL}",
+    ~"{DEPENDENCY_PACKAGE_NAME}": "{DEPENDENCY_PACKAGE_LOCAL_PATH}",
+    ...
+  },
+  "devDependencies": (field like dependencies field),
+  "peerDependencies": (field like dependencies field),
+  "bundledDependencies": (field like dependencies field),
+  "optionalDependencies": (field like dependencies field),
+  "engines": {
+    "{REQUIRED_ENGINE}": "{REQUIRED_ENGINE_VERSION (Semantic Versioning Range)}",
+    ...
+  },
+  "engineStrict": (field like engine field),
+  "os": [
+    "{ALLOWED_OS}",
+    "!{RESTRICTED_OS}",
+    ...
+  ],
+  "cpu": (field like os field just for cpus),
+  "preferGlobal": true|false (prefer global install),
+  "private": true|false (refuse to publish),
+  "publishConfig": TODO,
+}
