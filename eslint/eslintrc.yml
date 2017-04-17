@@ -1,0 +1,1124 @@
+# ESLint v3.19.0 (15-04-2017)
+# Configuration in YAML
+
+#####################################
+# ESLint Inline Configuration Guide #
+#####################################
+#
+# - Environment (block comment)
+#     `eslint-env {environment}, ...`
+# - Globals (block comment)
+#     `global {variable}[:false], ...`
+#     The optional `false` flag makes the variable read-only.
+# - Exported Variables (block comment)
+#     `exported {variable}, ...`
+# - Rules (block comment)
+#     `eslint [{plugin name}/]{rule name}: {rule value like in config file}, ...`
+# - Disabling/Enabling Rules (block comment)
+#     `eslint-(disable|enable) [[{plugin name}/]{rule name}, ...]`
+#     If no rule is specified all are disabled/enabled
+# - Disabling Rules (line comment)
+#     `eslint-disable-[next-]line [[{plugin name}/]{rule name}, ...]`
+
+# TODO:
+#     - tags: [RELEASE]
+
+
+########## ########## Inherited Configurations ########## ##########
+# Documentation: [Extending Configuration Files](http://eslint.org/docs/user-guide/configuring#extending-configuration-files)
+
+extends: []
+
+########## ########## Parser & Parser Options ########## ##########
+# Documentation: [Specifying Parser](http://eslint.org/docs/user-guide/configuring#specifying-parser)
+# Documentation: [Specifying Parser Options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options)
+
+parser: esprima # default: esprima
+parserOptions:
+  ecmaVersion: 8 # default: 5
+  sourceType: module # default: script
+  ecmaFeatures: # default: false
+    globalReturn: false
+    impliedStrict: false
+    jsx: true
+    experimentalObjectRestSpread: true
+
+########## ########## Environment ########## ##########
+# Documentation: [Specifying Environments](http://eslint.org/docs/user-guide/configuring#specifying-environments)
+# Hint: value true := enable environment
+
+env:
+  es6: true
+
+########## ########## Globals ########## ##########
+# Documentation: [Specifying Globals](http://eslint.org/docs/user-guide/configuring#specifying-globals)
+# Hint: value true := read-only variable
+
+globals: {}
+
+########## ########## Plugins ########## ##########
+# Documentation: [Configuring Plugins](http://eslint.org/docs/user-guide/configuring#configuring-plugins)
+
+plugins: []
+
+########## ########## Rules ########## ##########
+# Documentation: [Configuring Rules](http://eslint.org/docs/user-guide/configuring#configuring-rules)
+# Documentation: [ESLint Rules](http://eslint.org/docs/rules)
+
+rules:
+  ########## Inherited Rules ##########
+
+  ########## Plugin Rules ##########
+
+  ########## Possible Errors ##########
+  # Documentation: [Possible Errors](http://eslint.org/docs/rules/#possible-errors)
+
+  no-await-in-loop:
+    - warn
+  no-compare-neg-zero:
+    - error
+  no-cond-assign:
+    # default: except-parens
+    # recommended
+    # standard
+    - error
+    - except-parens
+  no-console: # [RELEASE]
+    # default: { allow: [] }
+    # recommended
+    - off # warn
+    - allow: [warn, error]
+  no-constant-condition:
+    # default: { checkLoops: true }
+    # recommended
+    # standard: { checkLoops: false }
+    - error
+    - checkLoops: true
+  no-control-regex:
+    # recommended
+    # standard
+    - error
+  no-debugger: # [RELEASE]
+    # recommended
+    # standard
+    - off # error
+  no-dupe-args:
+    # recommended
+    # standard
+    - error
+  no-dupe-keys:
+    # recommended
+    # standard
+    - error
+  no-duplicate-case:
+    # recommended
+    # standard
+    - error
+  no-empty-character-class:
+    # recommended
+    # standard
+    - error
+  no-empty:
+    # default: { allowEmptyCatch: false }
+    # recommended
+    - error
+    - allowEmptyCatch: false
+  no-ex-assign:
+    # recommended
+    # standard
+    - error
+  no-extra-boolean-cast:
+    # recommended
+    # standard
+    - error
+  no-extra-parens:
+    # default: all, {
+    #       conditionalAssign: true,
+    #       returnAssign: true,
+    #       nestedBinaryExpressions: true,
+    #       ignoreJSX: none }
+    # standard: functions
+    - error
+    - all
+    - conditionalAssign: true
+      returnAssign: true
+      nestedBinaryExpressions: true
+      ignoreJSX: none
+  no-extra-semi:
+    # recommended
+    - error
+  no-func-assign:
+    # recommended
+    # standard
+    - error
+  no-inner-declarations:
+    # default: functions
+    # recommended
+    # standard
+    - error
+    - functions
+  no-invalid-regexp:
+    # default: { allowConstructorFlags: [] }
+    # recommended
+    # standard
+    - error
+    - allowConstructorFlags: [u, y]
+  no-irregular-whitespace:
+    # default: {
+    #       skipStrings: true,
+    #       skipComments: false,
+    #       skipRegExps: false,
+    #       skipTemplates: false }
+    # recommended
+    # standard
+    - error
+    - skipStrings: false
+      skipComments: false
+      skipRegExps: false
+      skipTemplates: false
+  no-obj-calls:
+    # recommended
+    # standard
+    - error
+  no-prototype-builtins:
+    - off
+  no-regex-spaces:
+    # recommended
+    # standard
+    - error
+  no-sparse-arrays:
+    # recommended
+    # standard
+    - error
+  no-template-curly-in-string:
+    # standard
+    - error
+  no-unexpected-multiline:
+    # recommended
+    # standard
+    - error
+  no-unreachable:
+    # recommended
+    # standard
+    - error
+  no-unsafe-finally:
+    # recommended
+    # standard
+    - error
+  no-unsafe-negation:
+    # standard
+    - error
+  use-isnan:
+    # recommended
+    # standard
+    - error
+  valid-jsdoc:
+    # default: {
+    #       prefer: {},
+    #       preferType: {},
+    #       requireReturn: true,
+    #       requireReturnType: true,
+    #       matchDescription: '.*',
+    #       requireParamDescription: true,
+    #       requireReturnDescription: true }
+    - warn
+    - prefer:
+        # Block Tags
+        arg: param
+        argument: param
+        augments: extends
+        constant: const
+        constructor: class
+        defaultvalue: default
+        description: desc
+        emits: fires
+        exception: throws
+        fileoverview: file
+        function: func
+        host: external
+        member: var
+        method: func
+        overview: file
+        property: prop
+        return: returns
+        virtual: abstract
+        # Inline Tags
+        linkcode: link
+        linkplain: link
+      preferType:
+        boolean: Boolean
+        number: Number
+        object: Object
+        string: String
+        symbol: Symbol
+        function: Function
+        Null: 'null'
+        Undefined: 'undefined'
+      requireReturn: false
+      requireReturnType: true
+      matchDescription: '.+'
+      requireParamDescription: true
+      requireReturnDescription: true
+  valid-typeof:
+    # default: { requireStringLiterals: false }
+    # recommended
+    # standard: { requireStringLiterals: true }
+    - error
+    - requireStringLiterals: true
+
+  ########## Best Practices ##########
+  # Documentation: [Best Practices](http://eslint.org/docs/rules/#best-practices)
+
+  accessor-pairs:
+    # default: { setWithoutGet: true, getWithoutSet: false }
+    # standard
+    - error
+    - setWithoutGet: false
+      getWithoutSet: false
+  array-callback-return:
+    - off
+  block-scoped-var:
+    - error
+  class-methods-use-this:
+    # default: { exceptMethods: [] }
+    - warn
+    - exceptMethods: []
+  complexity:
+    # default: { max: 20 }
+    # shorthand:
+    #     { max: ??? } => ???
+    - off
+  consistent-return:
+    # default: { treatUndefinedAsUnspecified: false }
+    - error
+    - treatUndefinedAsUnspecified: false
+  curly:
+    # default: all
+    # standard: multi-line
+    - warn
+    - multi
+    - consistent
+  default-case:
+    # default: { commentPattern: '^no default$'i }
+    - error
+    - commentPattern: '^no default$'
+  dot-location:
+    # default: object
+    # standard: property
+    - warn
+    - property
+  dot-notation:
+    # default: { allowKeywords: true, allowPattern: '' }
+    - off
+  eqeqeq:
+    # default: always, { null: always }
+    # standard: always, { null: ignore }
+    - error
+    - always
+    - null: never
+  guard-for-in:
+    - off
+  no-alert: # [RELEASE]
+    - off # warn
+  no-caller:
+    # standard
+    - error
+  no-case-declarations:
+    # recommended
+    - warn
+  no-div-regex:
+    - off
+  no-else-return:
+    - off
+  no-empty-function:
+    # default: { allow: [] }
+    - warn
+    - allow: []
+  no-empty-pattern:
+    # recommended
+    # standard
+    - error
+  no-eq-null:
+    - off
+  no-eval: # [RELEASE]
+    # default: { allowIndirect: false }
+    - off # warn
+    - allowIndirect: false
+  no-extend-native:
+    # default: { exceptions: [] }
+    - off
+  no-extra-bind:
+    - error
+  no-extra-label:
+    - warn
+  no-fallthrough:
+    # default: { commentPattern: break[\\s\\w]*omitted }
+    # recommended
+    # standard
+    - error
+    - commentPattern: '^break omitted$'
+  no-floating-decimal:
+    - off
+  no-global-assign:
+    # default: { exceptions: [] }
+    - error
+    - exceptions: []
+  no-implicit-coercion:
+    # default: {
+    #       boolean: true,
+    #       number: true,
+    #       string: true,
+    #       allow: [] }
+    - off
+  no-implicit-globals:
+    - error
+  no-implied-eval: # [RELEASE]
+    - off # warn
+  no-invalid-this:
+    - error
+  no-iterator:
+    - error
+  no-labels:
+    # default: { allowLoop: false, allowSwitch: false }
+    - warn
+    - allowLoop: true
+      allowSwitch: true
+  no-lone-blocks:
+    - warn
+  no-loop-func:
+    - error
+  no-magic-numbers:
+    # default: {
+    #       ignore: [],
+    #       ignoreArrayIndexes: false,
+    #       enforceConst: false,
+    #       detectObjects: false }
+    - off
+  no-multi-spaces:
+    # default: { exceptions: { Property: true } }
+    - warn
+    - exceptions:
+        Property: true
+  no-multi-str:
+    - warn
+  no-new-func:
+    - off
+  no-new-wrappers:
+    - off
+  no-new:
+    - off
+  no-octal-escape:
+    - warn
+  no-octal:
+    # recommended
+    # standard
+    - warn
+  no-param-reassign:
+    # default: { props: false }
+    - off
+  no-proto:
+    - warn
+  no-redeclare:
+    # recommended
+    # standard
+    - error
+  no-restricted-properties:
+    # default...
+    - off
+  no-return-assign:
+    # default: except-parens
+    # standard
+    - warn
+    - except-parens
+  no-return-await:
+    - error
+  no-script-url:
+    - error
+  no-self-assign:
+    # default: { props: false }
+    # recommended
+    # standard
+    - error
+    - props: true
+  no-self-compare:
+    # standard
+    - error
+  no-sequences:
+    # standard
+    - off
+  no-throw-literal:
+    # standard
+    - off
+  no-unmodified-loop-condition:
+    # standard
+    - error
+  no-unused-expressions:
+    # default: { allowShortCircuit: false, allowTernary: false }
+    # standard: { allowShortCircuit: true, allowTernary: true }
+    - error
+    - allowShortCircuit: true
+      allowTernary: true
+  no-unused-labels:
+    # recommended
+    - warn
+  no-useless-call:
+    # standard
+    - warn
+  no-useless-concat:
+    - off
+  no-useless-escape:
+    # standard
+    - warn
+  no-useless-return:
+    # standard
+    - error
+  no-void:
+    - off
+  no-warning-comments: # [RELEASE]
+    # default: { terms: [todo, fixme, xxx], location: start }
+    - off # error
+    - terms: [todo, fixme, xxx]
+      location: start
+  no-with:
+    # standard
+    - error
+  prefer-promise-reject-errors:
+    # define: { allowEmptyReject: false }
+    # standard
+    - warn
+    - allowEmptyReject: false
+  radix:
+    # default: always
+    - warn
+    - as-needed
+  require-await:
+    - error
+  vars-on-top:
+    - off
+  wrap-iife:
+    # default: outside, { functionPrototypeMethods: false }
+    # standard: any, { functionPrototypeMethods: true }
+    - error
+    - inside
+    - functionPrototypeMethods: true
+  yoda:
+    # default: never, { exceptRange: false, onlyEquality: false }
+    # standard: never
+    - error
+    - never
+    - exceptRange: true
+      onlyEquality: false
+
+  ########## Strict Mode ##########
+  # Documentation: [Strict Mode](http://eslint.org/docs/rules/#strict-mode)
+
+  strict:
+    # default: safe
+    - off
+    - safe
+
+  ########## Variables ##########
+  # Documentation: [Variables](http://eslint.org/docs/rules/#variables)
+
+  init-declarations:
+    # default: always
+    - off
+  no-catch-shadow:
+    - error
+  no-delete-var: # [RELEASE]
+    # recommended
+    # standard
+    - off # warn
+  no-label-var:
+    # standard
+    - error
+  no-restricted-globals:
+    # default...
+    - off
+  no-shadow-restricted-names:
+    # standard
+    - error
+  no-shadow:
+    # default: { builtinGlobals: false, hoist: functions, allow: [] }
+    - error
+    - builtinGlobals: true
+      hoist: all
+      allow: []
+  no-undef-init:
+    # standard
+    - warn
+  no-undef:
+    # default: { typeof: false }
+    # recommended
+    # standard
+    - error
+    - typeof: true
+  no-undefined:
+    - off
+  no-unused-vars:
+    # default: {
+    #       vars: all,
+    #       varsIgnorePattern: '',
+    #       arg: after-used,
+    #       argsIgnorePattern: '',
+    #       ignoreRestSiblings: false,
+    #       caughtErrors: none,
+    #       caughtErrorsIgnorePattern: '' }
+    # recommended
+    # standard: { vars: all, args: none }
+    - error
+    - vars: all
+      varsIgnorePattern: '^__[a-zA-Z0-9]'
+      args: all
+      argsIgnorePattern: '^(_$|__[a-zA-Z0-9])'
+      ignoreRestSiblings: false
+      caughtErrors: all
+      caughtErrorsIgnorePattern: '^(_$|__[a-zA-Z0-9])'
+  no-use-before-define:
+    # define: { functions: true, classes: true, variables: true }
+    # standard: { functions: false, classes: false, variables: false }
+    - error
+    - functions: true
+      classes: true
+      variables: true
+
+  ########## Node.js and CommonJS ##########
+  # Documentation: [Node.js and CommonJS](http://eslint.org/docs/rules/#nodejs-and-commonjs)
+
+  callback-return:
+    # default: [callback, cb, next]
+    - warn
+    - [callback, cb, next]
+  global-require:
+    - off
+  handle-callback-err:
+    # default: err
+    # standard: '^(err|error)$'
+    - warn
+    - '^(err|error|.+Error)$'
+  no-mixed-requires:
+    # default: { grouping: false, allowCall: false }
+    - off
+  no-new-require:
+    # standard
+    - error
+  no-path-concat:
+    # standard
+    - warn
+  no-process-env: # [RELEASE]
+    - off # warn
+  no-process-exit: # [RELEASE]
+    - off # warn
+  no-restricted-modules:
+    # default...
+    - off
+  no-sync:
+    - off
+
+  ########## Stylistic Issues ##########
+  # Documentation: [Stylistic Issues](http://eslint.org/docs/rules/#stylistic-issues)
+
+  array-bracket-spacing:
+    # default: never, { singleValue: false, objectsInArrays: false, arraysInArrays: false }
+    - warn
+    - never
+    - singleValue: false
+      objectsInArrays: false
+      arraysInArrays: false
+  block-spacing:
+    # default: always
+    # standard: always
+    - warn
+    - always
+  brace-style:
+    # default: 1tbs, { allowSingleLine: false }
+    # standard: 1tbs, { allowSingleLine: true }
+    - warn
+    - 1tbs
+    - allowSingleLine: true
+  camelcase:
+    # default: { properties: always }
+    # standard: { properties: never }
+    - error
+    - properties: always
+  capitalized-comments: # [RELEASE]
+    - off
+  comma-dangle:
+    # standard: {
+    #       arrays: never,
+    #       objects: never,
+    #       imports: never,
+    #       exports: never,
+    #       functions: never
+    #     }
+    - warn
+    - arrays: always-multiline
+      objects: always-multiline
+      imports: never
+      exports: always-multiline
+      functions: never
+  comma-spacing:
+    # standard: { before: false, after: true }
+    - warn
+    - before: false
+      after: true
+  comma-style:
+    # standard: last
+    - warn
+    - last
+  computed-property-spacing:
+    - warn
+    - never
+  consistent-this:
+    - off
+  eol-last:
+    # standard: always
+    - warn
+    - always
+  func-call-spacing:
+    # standard: never
+    - warn
+    - never
+  func-name-matching:
+    - warn
+    - always
+    - includeCommonJSModuleExports: false
+  func-names:
+    - error
+    - never
+  func-style:
+    - off
+  id-blacklist:
+    - off
+  id-length:
+    - off
+  id-match:
+    - off
+  indent:
+    # standard: 2, { SwitchCase: 1 }
+    - warn
+    - 2
+    - SwitchCase: 0
+      VariableDeclarator:
+        var: 2
+        let: 2
+        const: 3
+      outerIIFEBody: 1
+      MemberExpression: 2
+      FunctionDeclaration:
+        body: 1
+        parameters: first
+      FunctionExpression:
+        body: 1
+        parameters: first
+      CallExpression:
+        arguments: first
+      ArrayExpression: 1
+      ObjectExpression: 1
+  jsx-quotes:
+    - warn
+    - prefer-double
+  key-spacing:
+    # standard: { beforeColon: false, afterColon: true }
+    - warn
+    - beforeColon: false
+      afterColon: true
+      mode: strict
+  keyword-spacing:
+    # standard: { before: true, after: true }
+    - warn
+    - before: true
+      after: true
+  line-comment-position:
+    - off
+  linebreak-style:
+    - error
+    - windows
+  lines-around-comment:
+    - warn
+    - beforeBlockComment: true
+      afterBlockComment: false
+      beforeLineComment: false
+      afterLineComment: false
+      allowBlockStart: true
+      allowBlockEnd: false
+      allowObjectStart: true
+      allowObjectEnd: false
+      allowArrayStart: true
+      allowArrayEnd: false
+      applyDefaultIgnorePatterns: true
+  lines-around-directive:
+    - warn
+    - always
+  max-depth:
+    - off
+  max-len:
+    - off
+  max-lines:
+    - off
+  max-nested-callbacks:
+    - off
+  max-params:
+    - off
+  max-statements:
+    - off
+  max-statements-per-line:
+    - warn
+    - max: 1
+  multiline-ternary:
+    - off
+  new-cap:
+    # standard: { newIsCap: true, capIsNew: false }
+    - Error
+    - newIsCap: true
+      capIsNew: true
+      newIsCapExceptions: []
+      newIsCapExceptionPattern: ''
+      capIsNewExceptions: []
+      capIsNewExceptionPattern: ''
+      properties: true
+  new-parens:
+    # standard
+    - error
+  newline-after-var:
+    - off
+  newline-before-return:
+    -  off
+  newline-per-chained-call:
+    - off
+  no-array-constructor:
+    # standard
+    - error
+  no-bitwise:
+    - warn
+  no-continue:
+    - off
+  no-inline-comments:
+    - off
+  no-lonely-if:
+    - warn
+  no-mixed-operators:
+    # standard: {
+    #       groups: [
+    #         ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+    #         ['&&', '||'],
+    #         ['in', 'instanceof']
+    #       ],
+    #       allowSamePrecedence: true
+    #     }]
+    - error
+    - groups:
+        - ['+', '-', '*', '/', '%', '**']
+        - ['&', '|', '^', '~', '<<', '>>', '>>>']
+        - ['==', '!=', '===', '!==', '>', '>=', '<', '<=']
+        - ['&&', '||']
+        - ['in', 'instanceof']
+      allowSamePrecedence: true
+  no-mixed-spaces-and-tabs:
+    # recommended
+    # standard
+    - error
+  no-multi-assign:
+    - off
+  no-multiple-empty-lines:
+    # standard: { max: 1, maxEOF: 0 }
+    - warn
+    - max: 2
+      maxBOF: 1
+      maxEOF: 1
+  no-negated-condition:
+    - off
+  no-nested-ternary:
+    - error
+  no-new-object:
+    # standard
+    - error
+  no-plusplus:
+    - off
+  no-restricted-syntax:
+    - off
+  no-tabs:
+    # standard
+    - error
+  no-ternary:
+    - off
+  no-trailing-spaces:
+    # standard
+    - warn
+  no-underscore-dangle:
+    - off
+  no-unneeded-ternary:
+    # standard
+    - warn
+    - defaultAssignment: true
+  no-whitespace-before-property:
+    # standard
+    - warn
+  nonblock-statement-body-position:
+    - error
+    - below
+  object-curly-newline:
+    - warn
+    - ObjectExpression:
+        multiline: true
+        minProperties: 2
+      ObjectPattern:
+        multiline: true
+        minProperties: 3
+  object-curly-spacing:
+    - warn
+    - always
+    - arraysInObjects: false
+      objectsInObjects: false
+  object-property-newline:
+    # standard: { allowMultiplePropertiesPerLine: true }
+    - warn
+    - allowMultiplePropertiesPerLine: true
+  one-var:
+    # standard: { initialized: never }
+    - off
+  one-var-declaration-per-line:
+    - off
+  operator-assignment:
+    - warn
+    - always
+  operator-linebreak:
+    # standard: after, { overrides: { '?': before, ':': before } }
+    - warn
+    - after
+    - overrides: { '?': before, ':': before }
+  padded-blocks:
+    # standard: { blocks: never, switches: never, classes: never }
+    - warn
+    - blocks: never
+      switches: never
+      classes: never
+  quote-props:
+    - warn
+    - as-needed
+    - keywords: true
+      unnecessary: true
+      numbers: true
+  quotes:
+    # standard: single, { avoidEscape: true, allowTemplateLiterals: true }
+    - error
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: true
+  require-jsdoc: # [RELEASE]
+    - off
+    - require:
+        FunctionDeclaration: true
+        ClassDeclaration: true
+        MethodDefinition: true
+        ArrowFunctionExpression: true
+  semi:
+    # standard: never
+    - error
+    - never
+  semi-spacing:
+    # standard: { before: false, after: true }
+    - warn
+    - before: false
+      after: true
+  sort-keys:
+    - off
+  sort-vars:
+    - off
+  space-before-blocks:
+    # standard: always
+    - warn
+    - always
+  space-before-function-paren:
+    # standard: always
+    - warn
+    - anonymous: always
+      named: never
+      asyncArrow: always
+  space-in-parens:
+    # standard: never
+    - warn
+    - never
+  space-infix-ops:
+    # standard
+    - warn
+  space-unary-ops:
+    # standard:  { words: true, nonwords: false }
+    - warn
+    - words: true
+      nonwords: false
+  spaced-comment:
+    # standard:  always, {
+    #       line: {
+    #         markers: ['*package', '!', '/', ',']
+    #       },
+    #       block: {
+    #         balanced: true,
+    #         markers: ['*package', '!', ',', ':', '::', 'flow-include'],
+    #         exceptions: ['*']
+    #       }
+    #     }
+    - warn
+    - always
+    - line:
+        exceptions: []
+        markers: []
+      block:
+        exceptions: ['*']
+        markers: []
+        balanced: true
+  template-tag-spacing:
+    # standard: never
+    - warn
+    - never
+  unicode-bom:
+    # standard: never
+    - error
+    - never
+  wrap-regex:
+    - off
+
+  ########## ECMAScript 6 ##########
+  # Documentation: [ECMAScript 6](http://eslint.org/docs/rules/#ecmascript-6)
+
+  arrow-body-style:
+    # default: as-needed, { requireReturnForObjectLiteral: false }
+    - warn
+    - as-needed
+    - requireReturnForObjectLiteral: false
+  arrow-parens:
+    # default: always
+    - warn
+    - as-needed
+    - requireForBlockBody: true
+  arrow-spacing:
+    # default: { before: true, after: true }
+    # standard: { before: true, after: true }
+    - warn
+    - before: true
+      after: true
+  constructor-super:
+    # recommended
+    # standard
+    - error
+  generator-star-spacing:
+    # default: { before: true, after: false }
+    # shorthand:
+    #     { before: true , after: false } => before
+    #     { before: false, after: true  } => after
+    #     { before: true , after: true  } => both
+    #     { before: false, after: false } => neither
+    # standard
+    - warn
+    - after
+  no-class-assign:
+    # recommended
+    # standard
+    - error
+  no-confusing-arrow:
+    # default: { allowParens: false }
+    - warn
+    - allowParens: true
+  no-const-assign:
+    # recommended
+    # standard
+    - error
+  no-dupe-class-members:
+    # recommended
+    # standard
+    - error
+  no-duplicate-imports:
+    # standard
+    - error
+  no-new-symbol:
+    # recommended
+    # standard
+    - error
+  no-restricted-imports:
+    # default: { paths: [], patterns: [] }
+    - off
+  no-this-before-super:
+    # recommended
+    # standard
+    - error
+  no-useless-computed-key:
+    # standard
+    - warn
+  no-useless-constructor:
+    # standard
+    - warn
+  no-useless-rename:
+    # default: {
+    #       ignoreDestructuring: false,
+    #       ignoreImport: false,
+    #       ignoreExport: false }
+    # standard
+    - warn
+    - ignoreDestructuring: false
+      ignoreImport: false
+      ignoreExport: false
+  no-var:
+    - error
+  object-shorthand:
+    # default: always, {
+    #       avoidQuotes: false,
+    #       ignoreConstructors: false,
+    #       avoidExplicitReturnArrows: false }
+    - error
+    - always
+    - avoidQuotes: true
+      ignoreConstructors: false
+      avoidExplicitReturnArrows: true
+  prefer-arrow-callback:
+    # default: { allowNamedFunctions: false, allowUnboundThis: true }
+    - error
+    - allowNamedFunctions: false
+      allowUnboundThis: false
+  prefer-const:
+    # default: { destructuring: any }
+    - error
+    - destructuring: all
+  prefer-destructuring:
+    # default: { array: true, object: true },
+    #       { enforceForRenamedProperties: false }
+    - off
+  prefer-numeric-literals:
+    - warn
+  prefer-rest-params:
+    - error
+  prefer-spread:
+    - error
+  prefer-template:
+    - error
+  require-yield:
+    # recommended
+    - error
+  rest-spread-spacing:
+    # default: never
+    # standard: never
+    - error
+    - never
+  sort-imports:
+    # default: {
+    #       ignoreCase: false,
+    #       ignoreMemberSort: false,
+    #       memberSyntaxSortOrder: [none, all, multiple, single] }
+    - off
+  symbol-description:
+    # standard
+    - warn
+  template-curly-spacing:
+    # default: never
+    # standard: never
+    - error
+    - never
+  yield-star-spacing:
+    # default: { before: false, after: true }
+    # shorthand:
+    #     { before: true , after: false } => before
+    #     { before: false, after: true  } => after
+    #     { before: true , after: true  } => both
+    #     { before: false, after: false } => neither
+    # standard: both
+    - warn
+    - after
